@@ -1,0 +1,6 @@
+-- AlterTable
+ALTER TABLE "Book" ADD COLUMN     "pageCount" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "publisher" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "releaseDate" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "volume" TEXT NOT NULL DEFAULT '',
+ALTER COLUMN "author" SET DEFAULT '';
