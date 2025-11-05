@@ -1,11 +1,26 @@
-##Testing Instructions
-1.Git clone the repository 
-2.'cd <repository_folder>' 
-3.'npm install'
-4.'npm run dev'
-5.Go to address "http://localhost:4000"
-6.Paste Test queries to Operation Field
-7.Click to desired query and run button
+## Testing Instructions
+
+1. Git clone the repository 
+2. 'cd <repository_folder>' 
+3. 'npm install'
+4. Install docker cli (On Windows paste this command to terminal: 'winget install -e --id Docker.DockerDesktop')
+6. Pull postgres's latest image (Terminal: docker pull postgres:latest)
+7. Create postgres's container 
+( docker run -d `
+  --name graphqldemo-container
+  -e POSTGRES_USER=postgres `
+  -e POSTGRES_PASSWORD=1234 `
+  -e POSTGRES_DB=graphqldemo `
+  -p 5432:5432 `
+  postgres:latest )
+8. Check container status (docker ps)
+9. Create .env file on project root for database url 
+( DATABASE_URL="postgresql://myuser:mypassword@localhost:5432/mydatabase
+" )
+10. 'npm run dev'
+11. Go to address "http://localhost:4000"
+12. Paste Test queries to Operation Field
+13. Click to desired query and run button
 
 ### Test Queries
 
