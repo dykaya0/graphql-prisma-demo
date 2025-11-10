@@ -16,14 +16,27 @@ datasource db {
 model User {
   id      Int      @id @default(autoincrement())
   email   String   @unique
+  username   String   @unique
+  biography   String   
+  createdAt   DateTime @default(now())   
+  updatedAt   DateTime @updatedAt
+
+  account Account?
 }
 
-model Book {
+model Notification {
   id      Int      @id @default(autoincrement())
   title   String   @unique
-  author   String  @default("") 
-  publisher   String @default("")   
-  releaseDate   String   @default("")
-  pageCount   String   @default("")
-  volume   String   @default("")
+  text   String @default("")   
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Account {
+  id      Int      @id @default(autoincrement())
+  email   String   @unique
+  password   String   @unique
+
+  user User @relation(fields: [userId], references: [id])
+  userId Int @unique
 }

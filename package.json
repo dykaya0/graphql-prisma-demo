@@ -6,7 +6,9 @@
   "scripts": {
     "compile": "tsc",
     "start": "npm run compile && node ./dist/index.js",
-    "dev": "nodemon --watch src --ext ts --exec ts-node src/index.ts"
+    "dev:http": "nodemon --watch src --ext ts --exec ts-node src/httpExample.ts",
+    "dev:websocket": "nodemon --watch src --ext ts --exec ts-node src/websocketExample.ts",
+    "dev:auth": "nodemon --watch src --ext ts --exec 'node --loader ts-node/esm src/authExample.ts'"
   },
   "keywords": [],
   "author": "",
@@ -14,8 +16,16 @@
   "type": "module",
   "dependencies": {
     "@apollo/server": "^5.1.0",
+    "@as-integrations/express5": "^1.1.2",
+    "@graphql-tools/schema": "^10.0.27",
     "@prisma/client": "^6.18.0",
-    "graphql": "^16.12.0"
+    "bcryptjs": "^3.0.3",
+    "express": "^5.1.0",
+    "graphql": "^16.12.0",
+    "graphql-subscriptions": "^3.0.0",
+    "graphql-ws": "^5.14.0",
+    "jsonwebtoken": "^9.0.2",
+    "ws": "^8.18.3"
   },
   "devDependencies": {
     "@types/node": "^24.10.0",
