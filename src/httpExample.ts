@@ -10,6 +10,15 @@ import { GraphQLScalarType, Kind } from 'graphql';
 // A schema is a collection of type definitions (hence "typeDefs")
 // that together define the "shape" of queries that are executed against
 // your data.
+//
+// Example:   
+// type Query {
+//   getAllUsers: [User]
+// } =>
+// curl --request POST \
+//      --header 'content-type: application/json' \
+//      --url http://localhost:4000/graphql \
+//      --data '{"query":"query AllUsers {\n  getAllUsers {\n    id\n    username\n    email\n    biography\n    createdAt\n    updatedAt\n  }\n}","variables":{}}'
 const typeDefs = `#graphql
   scalar Date
 

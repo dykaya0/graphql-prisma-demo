@@ -1,5 +1,21 @@
 ## Testing Instructions
 
+[
+Download important dependencies if you haven't so: (node.js, npm and docker)
+
+# Download and install Chocolatey:
+powershell -c "irm https://community.chocolatey.org/install.ps1|iex"
+
+# Download and install Node.js:
+choco install nodejs --version="24.11.0"
+
+# Verify the Node.js version:
+node -v # Should print "v24.11.0".
+
+# Verify npm version:
+npm -v # Should print "11.6.1".
+
+]
 1. Git clone the repository 
 2. 'cd <repository_folder>' 
 3. 'npm install'
@@ -19,96 +35,4 @@
 " )
 10. 'npm run dev'
 11. Go to address "http://localhost:4000"
-12. Paste Test queries to Operation Field 
-13. Click to desired query and run button
 
-### Test Queries
-http://localhost:4000/graphql?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIIA2ZAchCgJYBmtUAhnREgM5HAA6SRRAOYIU5KjQZNWtdl178BRWmD6KiKBAA8UqxXRRkEugVDwJWCMCR0KBMAA5gLVmwIC%2Buvh6R8c%2BYmIAqhz4crrCohTBodzGSiq2RDAheEjMiHEIcMy0ZHEARjKCeMz2ABYEcabmGi5xDk611rre3r64hKQU1HSMLGycsQoRPZL9MkgAFMroRACMAJRDaspxGtprtAZGidXOzYkN%2B65E3gJefO3%2BXWTReGHDInfTYOiLy4qrhylpGYlZOTyiUKEGKpQqVTMx3qjmhClalx8SBAbiAA
-#### User
-
-query GetUsers{
-  getAllUsers {
-    id
-    email
-  }
-}
-
-query GetUserById{
-  getUser(id:3) {
-    id
-    email
-  }
-}
-
-mutation {
-  updateUser(id: 1,email: "user1@example.com") {
-    id
-    email
-  }
-}
-
-mutation {
-  addUser(id: 1,email: "updated_user1@example.com") {
-    id
-    email
-  }
-}
-
-#### Book
-
-query GetAllBooks{
-  getAllBooks {
-    title
-    author
-    publisher
-    releaseDate
-    pageCount
-    volume
-  }
-}
-
-query GetAllBooksPageCounts{
-  getAllBooks {
-    title
-    author
-    pageCount
-  }
-}
-query GetAllBooksReleaseDate{
-  getAllBooks {
-    title
-    author
-    releaseDate
-  }
-}
-mutation {
-  addBook(title:"Dune",
-  author: "Frank Herbert",
-  publisher: "Ithaki Yayinlari",
-  releaseDate: "2018",
-  pageCount: "527",
-  volume: "3",) {
-    title
-    author
-    publisher
-    releaseDate
-    pageCount
-    volume
-  }
-}
-
-mutation {
-  updateBook(title:"Crime And Punishment",
-  author: "Fyodor Dostoyevsky",
-  publisher: "Yapi Kredi Yayinlari",
-  releaseDate: "1997",
-  pageCount: "859",
-  volume: "13",) {
-    title
-    author
-    publisher
-    releaseDate
-    pageCount
-    volume
-  }
-}

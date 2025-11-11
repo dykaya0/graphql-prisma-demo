@@ -119,7 +119,8 @@ const resolvers = {
             if (!userId) throw new Error("Not authenticated");
             return prisma.notification.findMany();
         },
-        getNotification: async (_: unknown, args: { id: string }, { prisma }) => {
+        getNotification: async (_: unknown, args: { id: string }, { prisma, userId }) => {
+            if (!userId) throw new Error("Not authenticated");
             const { id } = args
             return prisma.notification.findUnique({
                 where: {
@@ -128,8 +129,13 @@ const resolvers = {
             })
         },
 
-        getAllUsers: async (_: unknown, args: any, { prisma }) => { return prisma.user.findMany() },
-        getUser: async (_: unknown, args: { id: string }, { prisma }) => {
+        getAllUsers: async (_: unknown, args: any, { prisma, userId }) => {
+            if (!userId) throw new Error("Not authenticated");
+            return prisma.user.findMany()
+        },
+        getUser: async (_: unknown, args: { id: string }, { prisma, userId }) => {
+
+            if (!userId) throw new Error("Not authenticated");
             const { id } = args
             return prisma.user.findUnique({
                 where: {
@@ -142,8 +148,10 @@ const resolvers = {
         addNotification: async (
             _: unknown,
             args: NotificationArgs,
-            { prisma }
+            { prisma, userId }
         ) => {
+
+            if (!userId) throw new Error("Not authenticated");
             const { title, text } = args;
 
             const notification = await prisma.notification.create({
@@ -164,8 +172,10 @@ const resolvers = {
         deleteNotification: async (
             _: unknown,
             args: { id: Number },
-            { prisma }
+            { prisma, userId }
         ) => {
+
+            if (!userId) throw new Error("Not authenticated");
             const { id } = args;
 
             // Convert id to number if your Prisma model uses Int as id
@@ -189,8 +199,10 @@ const resolvers = {
         addUser: async (
             _: unknown,
             args: UserArgs,
-            { prisma }
+            { prisma, userId }
         ) => {
+
+            if (!userId) throw new Error("Not authenticated");
             const { email, username, biography } = args;
 
             // Convert id to number if your Prisma model uses Int as id
@@ -203,8 +215,10 @@ const resolvers = {
         updateUser: async (
             _: unknown,
             args: UserArgs,
-            { prisma }
+            { prisma, userId }
         ) => {
+
+            if (!userId) throw new Error("Not authenticated");
             const { id, email, username, biography } = args;
 
             // Convert id to number if your Prisma model uses Int as id
@@ -218,8 +232,10 @@ const resolvers = {
         deleteUser: async (
             _: unknown,
             args: { id: Number },
-            { prisma }
+            { prisma, userId }
         ) => {
+
+            if (!userId) throw new Error("Not authenticated");
             const { id } = args;
 
             // Convert id to number if your Prisma model uses Int as id
